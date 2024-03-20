@@ -1,0 +1,10 @@
+SELECT ?pathwayID ?pathwaytitle ?gene 
+WHERE{
+  VALUES ?pathwayID {"WP4269" "WP5444"}  # this query will focus on the pathways with ID WP4269 and WP5444
+    ?pathway a wp:Pathway; # define what pathway means
+               dcterms:identifier ?pathwayID ; # get pathway with connected pathway ID
+               dc:title ?pathwaytitle. # get pathway with connected pathway title 
+?datanode dcterms:isPartOf ?pathway; # define that the data nodes have to be part of a pathway 
+          a wp:GeneProduct; # define that the showed data nodes are only genes
+          rdfs:label ?gene. # get data node with connected name of the gene  
+} ORDER BY ASC(?pathwayID) # order the showed results per pathway ID starting with WP4269
