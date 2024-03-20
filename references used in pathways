@@ -1,0 +1,8 @@
+SELECT  ?pathwayID ?pubmed
+WHERE {
+  VALUES ?pathwayID {"WP4269" "WP5444"} # this query will focus on the pathways with ID WP4269 and WP5444
+  ?pathway a wp:Pathway; # define what pathway means
+             dcterms:identifier ?pathwayID. # get pathway with connected pathway ID
+  ?pubmed a wp:PublicationReference ; # get that pubmed shows you the reference used in the pathway publication
+          dcterms:isPartOf ?pathway . #defines that pubmed is part of the used pathways 
+}
