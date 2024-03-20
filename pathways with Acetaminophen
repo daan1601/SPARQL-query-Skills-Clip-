@@ -1,0 +1,11 @@
+SELECT ?pathway ?pathwaytitle ?pathwayID ?description
+WHERE {
+   ?dataNode a wp:DataNode;  	# define what data node means 
+              rdfs:label "Acetaminophen";	# get data node with name Acetaminophen
+             dcterms:isPartOf ?pathway.	# define that the data nodes have to be part of a pathway 
+ ?pathway a wp:Pathway;		# define what pathway means
+             dc:title ?pathwaytitle;		# get pathway with connected pathway title 
+             dcterms:identifier ?pathwayID; # get pathway with connected pathway ID
+             dcterms:description ?description; # get a description of the pathway 
+             wp:organismName "Homo sapiens". # only search in pathways for humans 
+  }
